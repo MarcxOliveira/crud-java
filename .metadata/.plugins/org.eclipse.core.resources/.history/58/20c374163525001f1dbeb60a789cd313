@@ -56,7 +56,7 @@ public class ContatoDAO {
 		
 	}
 
-	public List<Contato> getContatos;{
+	public List<Contato> getContatos{
 		
 	String sql = "SELECT * FROM contatos";
 	
@@ -90,26 +90,11 @@ public class ContatoDAO {
 			
 			
 			contatos.add(contato);
-		}	
-	}catch (Exception e) {
-		e.printStackTrace();
-	}finally {
-		try {
+		}
 		
-			if(rset!=null) {
-				rset.close();
-			}
-			
-			if(pstm!=null) {
-				pstm.close();
-			}
-			if(conn!=null) {
-				conn.close();
-			}
-	}	catch (Exception e) {
-		e.printStackTrace();
+		
+		
 	}
 	}
-	}
+	
 }
-
