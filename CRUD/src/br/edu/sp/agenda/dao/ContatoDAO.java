@@ -1,0 +1,56 @@
+package br.edu.sp.agenda.dao;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+
+import br.edu.sp.agenda.factory.ConnetionFactory;
+import br.edu.sp.agenda.model.Contato;
+
+public class ContatoDAO {
+
+
+	public void save(Contato contato) {
+		
+		String sql = "INSERT INTO contatos(nome, idade, datacadastro) VALUES(?, ?, ?)";
+		
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		
+		try {
+			//Criar uma conexão com o banco de dados
+			conn = ConnetionFactory.createConnectionToMysql();
+			
+			//Criamos uma PrepareStatement, para executar uma query
+			pstm = conn.prepareStatement(sql);
+			//Adicionar os valores
+			pstm.setNString(1, contato.getNome());
+			pstm.setInt(2, contato.getIdade());
+			pstm.setDate(3, new Date(contato.getDataCadastro().getTime()));
+			
+			//Executar a query
+			pstm.execute();
+			
+			System.out.println("Contato salvo com sucesso!");
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			//fechar as conexões
+			try {
+				if(pstm!=null) {
+					pstm.close();
+				}
+				
+				if(conn!=null) {
+					conn.close();
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+}

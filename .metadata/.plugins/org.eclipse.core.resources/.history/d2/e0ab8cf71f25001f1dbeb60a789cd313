@@ -1,0 +1,5 @@
+package br.edu.sp.agenda.model;
+
+public class Agenda {
+
+}

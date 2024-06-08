@@ -1,0 +1,10 @@
+package br.edu.sp.agenda.dao;
+
+public class ContatoDAO {
+
+
+	public void save() {
+		
+	}
+	
+}
